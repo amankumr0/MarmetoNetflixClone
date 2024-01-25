@@ -55,7 +55,7 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
 
                     json.results.map(movie => {
                         str += ` <li class="splide__slide">
-                        <div>
+                        <div class="inside-li">
                             <div class="li-image">
                             <img class="li-img" src=${imgPath + movie.poster_path} alt="">
                             </div>
@@ -68,18 +68,11 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                     console.log(document.querySelector('ul[data-ref="ul"]').innerHTML)
                     console.log(str)
                     var splide = new Splide('.splide', {
-                        type: 'loop',
+                        width: "100%",
                         perPage: 4,
-                        gap: "5%",
+                        gap: "4%",
+                        autoWidth: true,
                         pagination: false,
-                        breakpoints: {
-                            640: {
-                                perPage: 2,
-                            },
-                            480: {
-                                perPage: 1,
-                            },
-                        },
                     });
 
                     splide.mount();
