@@ -75,7 +75,8 @@ nav p {
 .hero-text h1 {
 
     font-weight: 700;
-    font-size: 48px;
+    font-size: 0.5rem;
+    font-size: clamp(0.5rem, -0.20000000000000007rem + 3.5000000000000004vw, 4rem);
 }
 
 .hero-text p {
@@ -158,6 +159,10 @@ nav p {
     height: max-content;
 }
 
+.my-li-slide {
+    width: 200px;
+}
+
 .movie-details {
     height: 100%;
     display: flex;
@@ -168,7 +173,7 @@ nav p {
 }
 
 .movie-img-div {
-    max-width: 30%;
+    max-width: 300px;
 }
 
 .movie-img-div img {
@@ -240,11 +245,8 @@ nav p {
     max-width: 260px;
 }
 
-@media screen and (max-width:840px) {
-    .hero h1 {
+@media screen and (max-width:850px) {
 
-        font-size: clamp(2.5rem, 0.95rem + 0.25vw, 1.2rem);
-    }
 
     .hero p {
         font-size: clamp(0.1rem, 0.75rem + 0.15vw, 1.2rem);

@@ -48,7 +48,7 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                     let str = '';
 
                     json.results.map(movie => {
-                        str += ` <li class="splide__slide">
+                        str += ` <li class="splide__slide my-li-slide">
                         <div class="inside-li">
                             <div class="li-image">
                             <img class="li-img" src=${imgPath + movie.poster_path} alt="">
@@ -63,11 +63,10 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                     var splide = new Splide('.splide', {
                         width: "100%",
                         perPage: 4,
-                        gap: "4%",
+                        gap: "5em",
                         autoWidth: true,
                         pagination: false,
                     });
-
                     splide.mount();
                 })
                 .catch(err => console.error('error:' + err));
@@ -79,19 +78,11 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
 
 
 
-
 var splide = new Splide('.splider-two', {
-    type: 'loop',
-    perPage: 3,
-    gap: "10%",
-    breakpoints: {
-        800: {
-            perPage: 2,
-        },
-        480: {
-            perPage: 1,
-        },
-    },
+    width: "100%",
+    gap: "5em",
+    autoWidth: true,
+    pagination: false,
 });
 splide.mount();
 
