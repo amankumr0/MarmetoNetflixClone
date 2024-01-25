@@ -9,7 +9,6 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
     const genres = []
     let movieGenres = []
     let imgPath = `https://image.tmdb.org/t/p/original`;
-    console.log(value)
     const url = `https://api.themoviedb.org/3/search/movie?query=${value}`;
     const options = {
         method: 'GET',
@@ -22,10 +21,7 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
     fetch(url, options)
         .then(res => res.json())
         .then(json => {
-            console.log(json)
             moviesData.push(json.results[0])
-            console.log(moviesData)
-            console.log(imgPath + json.results[0].poster_path)
             document.querySelector(".search-poster").src = imgPath + json.results[0].poster_path
             document.querySelector(".title").innerText = json.results[0].original_title;
             // document.querySelector(".category").innerText = json.results[0].original_title;
@@ -48,8 +44,6 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
             fetch(url2, options2)
                 .then(res => res.json())
                 .then(json => {
-                    console.log("reccoo")
-                    console.log(json)
 
                     let str = '';
 
@@ -66,7 +60,6 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                     })
                     document.querySelector('ul[data-ref="ul"]').innerHTML = str;
                     console.log(document.querySelector('ul[data-ref="ul"]').innerHTML)
-                    console.log(str)
                     var splide = new Splide('.splide', {
                         width: "100%",
                         perPage: 4,
