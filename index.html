@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <p>Netflix</p>
+    </nav>
+    <section class="hero">
+        <img src="image/Poster.png" alt="" srcset="">
+        <div class="hero-text">
+            <h1>John Wick 3 : Parabellum</h1>
+            <p>John Wick is on the run after killing a member of the international assassins' guild, and with a $14
+                million price tag
+                on his head, he is the target of hit men and women everywhere.</p>
+            <button title="my-btn" class="btn">
+                <i class='bx bx-play'></i>&nbsp;
+                Watch trailer
+            </button>
+        </div>
+    </section>
+    <section class="search-sec">
+        <form class="search-div">
+            <input type="text" name="movie-search" id="movie-search" title="search-movie" class="search-input">
+            <button class="search-div-button" title="button" type="submit"><i class='bx bx-search'></i></button>
+        </form>
+    </section>
+
+    <section class="fetched-movie">
+        <div class="movie-img-div">
+            <img src="image/Thumbnails.jpg" class="search-poster" alt="">
+        </div>
+        <div class="movie-details">
+            <h1 class="title">Movie title</h1>
+            <p class="category">Category</p>
+            <p class="relese-date">Relese Date</p>
+            <p class="discription">Discription</p>
+        </div>
+    </section>
+
+
+
+    <section class="recmmd-movie">
+        <h1 class="recomm-title">Recommended Movie</h1>
+        <section class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list" data-ref="ul">
+                </ul>
+            </div>
+        </section>
+    </section>
+
+
+    <section class="fav-list fav-slider recmmd-movie">
+        <h1 class="recomm-title">Favorites List</h1>
+        <section class="splide splider-two" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <div>
+                            <div class="li-image">
+                                <img src="image/Thumbnails.jpg" alt="">
+                            </div>
+                            <h3>Movie Name</h3>
+                            <p>Action, Adventure, Drama</p>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div>
+                            <img src="image/Thumbnails.jpg" alt="">
+                            <h3>Movie Name</h3>
+                            <p>Action, Adventure, Drama</p>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div>
+                            <img src="image/Thumbnails.jpg" alt="">
+                            <h3>Movie Name</h3>
+                            <p>Action, Adventure, Drama</p>
+                        </div>
+                    </li>
+            </div>
+        </section>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
