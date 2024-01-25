@@ -163,6 +163,7 @@ nav p {
     width: 200px;
 }
 
+
 .movie-details {
     height: 100%;
     display: flex;
@@ -208,7 +209,7 @@ nav p {
 }
 
 .recmmd-movie {
-    padding: 88px;
+    padding: 45px 88px;
 }
 
 .fav-list {

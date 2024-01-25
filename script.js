@@ -22,14 +22,12 @@ const optionsGenres = {
 fetch(urlGenres, optionsGenres)
     .then(res => res.json())
     .then(json => {
-        console.log(json.genres)
         json.genres.map(data => {
             myMap.set(data.id, data.name)
         })
-        console.log(myMap)
-        console.log(myMap.get(28))
     })
     .catch(err => console.error('error:' + err));
+
 
 
 
@@ -76,7 +74,6 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                     let str = '';
 
                     json.results.map(movie => {
-                        console.log(movie)
                         str += ` <li class="splide__slide my-li-slide">
                         <div class="inside-li">
                             <div class="li-image">
@@ -102,10 +99,6 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
         })
         .catch(err => console.error('error:' + err));
 })
-
-
-
-
 
 
 
