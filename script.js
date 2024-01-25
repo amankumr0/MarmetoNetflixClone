@@ -1,12 +1,42 @@
 
 
+function genreStr(myGenre) {
+    let genreStr = [];
+    myGenre.map(genreID => {
+        genreStr.push(myMap.get(genreID))
+    });
+    return genreStr.join(', ');
+}
+
+let myMap = new Map();
+
+const urlGenres = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
+const optionsGenres = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MGRhMDI0MDI3OWQwMTQ5Y2JlZjIzNDlhMzBiNWVlYSIsInN1YiI6IjU2Y2ZjYWJiYzNhMzY4MWU0NDAwNTQ4MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N4fQwyEQMyNvkGSD2SDJBf9K_iHlt0WcZw0yFZktmkw'
+    }
+};
+
+fetch(urlGenres, optionsGenres)
+    .then(res => res.json())
+    .then(json => {
+        console.log(json.genres)
+        json.genres.map(data => {
+            myMap.set(data.id, data.name)
+        })
+        console.log(myMap)
+        console.log(myMap.get(28))
+    })
+    .catch(err => console.error('error:' + err));
+
 
 
 document.querySelector(".search-div").addEventListener("submit", (e) => {
     e.preventDefault();
     const value = document.querySelector(".search-input").value
     const moviesData = []
-    const genres = []
     let movieGenres = []
     let imgPath = `https://image.tmdb.org/t/p/original`;
     const url = `https://api.themoviedb.org/3/search/movie?query=${value}`;
@@ -24,12 +54,10 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
             moviesData.push(json.results[0])
             document.querySelector(".search-poster").src = imgPath + json.results[0].poster_path
             document.querySelector(".title").innerText = json.results[0].original_title;
-            // document.querySelector(".category").innerText = json.results[0].original_title;
             document.querySelector(".discription").innerText = json.results[0].overview;
             document.querySelector(".relese-date").innerText = json.results[0].release_date;
-            movieGenres = json.results[0].genre_ids;
-            document.querySelector(".search-input").value = ""
-
+            movieGenres = json.results[0].genre_ids
+            document.querySelector(".category").innerText = genreStr(json.results[0].genre_ids)
         })
         .then(data => {
             const url2 = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc' + '&with_genres=' + encodeURI(movieGenres.join(','));
@@ -48,18 +76,18 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                     let str = '';
 
                     json.results.map(movie => {
+                        console.log(movie)
                         str += ` <li class="splide__slide my-li-slide">
                         <div class="inside-li">
                             <div class="li-image">
                             <img class="li-img" src=${imgPath + movie.poster_path} alt="">
                             </div>
                             <h3>${movie.original_title}</h3>
-                            <p>Action, Adventure, Drama</p>
+                            <p>${genreStr(movie.genre_ids)}</p>
                         </div>
                     </li>`
                     })
                     document.querySelector('ul[data-ref="ul"]').innerHTML = str;
-                    console.log(document.querySelector('ul[data-ref="ul"]').innerHTML)
                     var splide = new Splide('.splide', {
                         width: "100%",
                         perPage: 4,
@@ -68,11 +96,15 @@ document.querySelector(".search-div").addEventListener("submit", (e) => {
                         pagination: false,
                     });
                     splide.mount();
+                    document.querySelector(".search-input").value = ""
                 })
                 .catch(err => console.error('error:' + err));
         })
         .catch(err => console.error('error:' + err));
 })
+
+
+
 
 
 
